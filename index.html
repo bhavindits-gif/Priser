@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priser Lending - Your Trusted Mortgage Broker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for a premium feel */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFDFD; /* Slightly cleaner white */
+            color: #1F2937; /* Dark Navy/Charcoal text */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Lora', serif;
+        }
+
+        .bg-brand-navy {
+            background-color: #111827;
+        }
+        
+        .text-brand-navy {
+            color: #111827;
+        }
+
+        .bg-light-cream {
+             background-color: #F8F5F2;
+        }
+        
+        /* Enhanced Animation for elements fading in on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s cubic-bezier(0.645, 0.045, 0.355, 1), transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* For FAQ Accordion */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        
+        .btn-premium {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(17, 24, 39, 0.2);
+        }
+
+        .section-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #111827;
+            color: white;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        /* Styles for policy pages */
+        .policy-page {
+            display: none; /* Hidden by default */
+        }
+        .policy-content h1 { @apply text-3xl md:text-4xl font-bold mb-4 text-brand-navy; }
+        .policy-content h3 { @apply text-xl font-bold mt-6 mb-2 text-brand-navy; }
+        .policy-content p { @apply mb-4 text-gray-700; }
+        .policy-content ul { @apply list-disc list-inside mb-4 pl-4 text-gray-700; }
+
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="page-container">
+        <!-- Header & Navigation -->
+        <header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+            <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#home" class="nav-link">
+                    <img src="https://placehold.co/200x50/111827/FFFFFF?text=PRISER+LENDING" 
+                         alt="Priser Lending Logo" 
+                         class="h-12 w-auto"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x50/cccccc/000000?text=Logo+Not+Found';">
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8 font-medium">
+                    <a href="#about" class="nav-link text-gray-600 hover:text-brand-navy transition duration-300">About</a>
+                    <a href="#services" class="nav-link text-gray-600 hover:text-brand-navy transition duration-300">Services</a>
+                    <a href="#process" class="nav-link text-gray-600 hover:text-brand-navy transition duration-300">Process</a>
+                    <a href="#testimonials" class="nav-link text-gray-600 hover:text-brand-navy transition duration-300">Testimonials</a>
+                    <a href="#faq" class="nav-link text-gray-600 hover:text-brand-navy transition duration-300">FAQ</a>
+                    <a href="#contact" class="nav-link bg-brand-navy text-white px-5 py-2 rounded-full font-semibold btn-premium">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </nav>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4">
+                <a href="#about" class="nav-link block py-2 text-gray-700 hover:text-brand-navy">About</a>
+                <a href="#services" class="nav-link block py-2 text-gray-700 hover:text-brand-navy">Services</a>
+                <a href="#process" class="nav-link block py-2 text-gray-700 hover:text-brand-navy">Process</a>
+                <a href="#testimonials" class="nav-link block py-2 text-gray-700 hover:text-brand-navy">Testimonials</a>
+                <a href="#faq" class="nav-link block py-2 text-gray-700 hover:text-brand-navy">FAQ</a>
+                <a href="#contact" class="nav-link block py-2 text-gray-700 hover:text-brand-navy">Contact</a>
+            </div>
+        </header>
+
+        <main id="main-content">
+            <!-- Hero Section -->
+            <section id="home" class="relative py-24 lg:py-40 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1740&q=80');">
+                <div class="absolute inset-0 bg-black/30"></div>
+                <div class="relative container mx-auto px-6 z-10 text-center reveal">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight text-white" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">Tailored Mortgage Solutions for You</h1>
+                    <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-white/90" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.7);">Professional advice and adaptable financing for your journey.</p>
+                    <a href="#contact" class="nav-link inline-block bg-white text-brand-navy px-10 py-4 rounded-full font-bold text-lg btn-premium">Get Started</a>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="py-24 bg-white">
+                <div class="container mx-auto px-6 text-center reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Our Story</h2>
+                    <div class="w-24 h-1 bg-brand-navy mx-auto mb-8 rounded"></div>
+                    <div class="max-w-3xl mx-auto">
+                        <p class="text-gray-600 mb-4 text-lg">Ms. Dharmistha Bharucha is a passionate and goal-oriented mortgage broker who has been a driving force in the industry since 2021. With a deep understanding of the mortgage landscape and an unwavering commitment to her clients, she has built a reputation for excellence.</p>
+                        <p class="text-gray-600 text-lg">Ms. Bharucha believes that every client deserves a mortgage solution that perfectly aligns with their financial situation and future aspirations. Her expertise, combined with a genuine desire to help others, makes her a trusted guide on your journey to homeownership.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Why Choose Priser Section -->
+            <section id="why-choose-us" class="py-24 bg-light-cream">
+                <div class="container mx-auto px-6 text-center reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-brand-navy">Why Choose Priser?</h2>
+                    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-16 text-gray-700">At Priser Lending, we help you unlock your dream home with expert advice, tailored loan options, and unwavering support — every step of the way.</p>
+                    <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 reveal">
+                            <div class="section-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Personalized Solutions</h3>
+                            <p class="text-gray-600">We tailor every loan to fit your unique financial situation and long-term goals.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 reveal" style="transition-delay: 0.2s;">
+                            <div class="section-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Transparency</h3>
+                            <p class="text-gray-600">We provide clear answers, not more questions, ensuring you're informed at every stage.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 reveal" style="transition-delay: 0.4s;">
+                            <div class="section-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Choices, Not Ultimatums</h3>
+                            <p class="text-gray-600">We empower you with a range of options, so you can make the best choice for your future.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our Services Section -->
+            <section id="services" class="py-24 bg-white">
+                <div class="container mx-auto px-6 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-brand-navy">Our Services</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white rounded-xl shadow-2xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 reveal group">
+                            <img src="https://primary.jwwb.nl/pexels/82/8292881.jpeg?enable-io=true&enable=upscale&crop=1449%2C1280%2Cx259%2Cy0%2Csafe&width=800&height=707" alt="Couple holding keys to new home" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/000000?text=Image+Not+Found';">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">First Home Buyer Loans</h3>
+                                <p class="text-gray-600 text-sm">We guide you through every step of purchasing your first home, making the process simple and stress-free.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-2xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 reveal group" style="transition-delay: 0.1s;">
+                            <img src="https://primary.jwwb.nl/pexels/82/8293647.jpeg?enable-io=true&enable=upscale&crop=1522%2C1280%2Cx398%2Cy0%2Csafe&width=800&height=673" alt="Modern investment property" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/000000?text=Image+Not+Found';">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Investment Loans</h3>
+                                <p class="text-gray-600 text-sm">Secure the right financing to grow your property portfolio and achieve your investment goals.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-2xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 reveal group" style="transition-delay: 0.2s;">
+                            <img src="https://primary.jwwb.nl/pexels/54/544965.jpeg?enable-io=true&enable=upscale&crop=1249%2C1280%2Cx423%2Cy0%2Csafe&width=800&height=820" alt="Person reviewing financial documents" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/000000?text=Image+Not+Found';">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Refinancing</h3>
+                                <p class="text-gray-600 text-sm">Explore opportunities to improve your loan terms, lower your repayments, and save money.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-2xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 reveal group" style="transition-delay: 0.3s;">
+                            <img src="https://primary.jwwb.nl/pexels/14/14541150.jpeg?enable-io=true&enable=upscale&crop=1600%2C1280%2Cx320%2Cy0%2Csafe&width=800&height=640" alt="Person driving a new car" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/000000?text=Image+Not+Found';">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Car & Personal Loans</h3>
+                                <p class="text-gray-600 text-sm">Get behind the wheel faster with competitive and flexible financing options for your new vehicle.</p>
+                            </div>
+                        </div>
+                         <div class="bg-white rounded-xl shadow-2xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 reveal group" style="transition-delay: 0.4s;">
+                            <img src="https://images.pexels.com/photos/8837752/pexels-photo-8837752.jpeg" alt="Blueprint of a new house" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/000000?text=Image+Not+Found';">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Construction Loans</h3>
+                                <p class="text-gray-600 text-sm">Funding made simple for your dream home build or major renovations, from start to finish.</p>
+                            </div>
+                        </div>
+                         <div class="bg-white rounded-xl shadow-2xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 reveal group" style="transition-delay: 0.5s;">
+                            <img src="https://media.bullseyeplus.com//Media/Blogs/5237/mortgage-pre-approval.jpg" alt="Person signing a document" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/000000?text=Image+Not+Found';">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Pre-Approved Loans</h3>
+                                <p class="text-gray-600 text-sm">Shop for your dream home with confidence, knowing exactly how much you can borrow beforehand.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works Section -->
+            <section id="process" class="py-24 bg-light-cream">
+                <div class="container mx-auto px-6 text-center reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-brand-navy">Our Simple 3-Step Process</h2>
+                    <div class="relative grid md:grid-cols-3 gap-10">
+                        <!-- Dashed line for desktop -->
+                        <div class="hidden md:block absolute top-1/2 left-0 w-full h-px border-t-2 border-dashed border-gray-300" style="margin-top: -24px;"></div>
+                        
+                        <div class="relative bg-white p-8 rounded-lg shadow-lg reveal">
+                            <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-brand-navy text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl border-4 border-light-cream">1</div>
+                            <h3 class="text-2xl font-bold mb-2 mt-8">Assessment</h3>
+                            <p class="text-gray-600">We start with an in-depth assessment to understand your financial goals and lay the foundation for your personalized mortgage journey.</p>
+                        </div>
+                        <div class="relative bg-white p-8 rounded-lg shadow-lg reveal" style="transition-delay: 0.2s;">
+                            <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-brand-navy text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl border-4 border-light-cream">2</div>
+                            <h3 class="text-2xl font-bold mb-2 mt-8">Sourcing & Application</h3>
+                            <p class="text-gray-600">We find the right loan, help you overcome obstacles, and guide you through the application for a smooth experience.</p>
+                        </div>
+                        <div class="relative bg-white p-8 rounded-lg shadow-lg reveal" style="transition-delay: 0.4s;">
+                             <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-brand-navy text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl border-4 border-light-cream">3</div>
+                            <h3 class="text-2xl font-bold mb-2 mt-8">Settlement & Beyond</h3>
+                            <p class="text-gray-600">We track your progress to settlement and beyond, ensuring you are on track to achieve your homeownership dreams.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section id="testimonials" class="py-24 bg-white">
+                <div class="container mx-auto px-6 text-center reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-brand-navy">What Our Clients Say</h2>
+                    <div class="grid md:grid-cols-3 gap-10">
+                        <div class="bg-light-cream p-8 rounded-lg shadow-md reveal">
+                            <p class="text-gray-600 italic">"Our experience with Priser Lending was life changing. The journey to our first home was eased by their compassionate support and effective strategies."</p>
+                            <p class="font-bold mt-4 text-brand-navy">- John D.</p>
+                        </div>
+                        <div class="bg-light-cream p-8 rounded-lg shadow-md reveal" style="transition-delay: 0.2s;">
+                            <p class="text-gray-600 italic">"We found solace and strength in Priser Lending's guidance. The tools and advice provided helped us navigate our finances and find peace of mind."</p>
+                            <p class="font-bold mt-4 text-brand-navy">- Sophie M.</p>
+                        </div>
+                        <div class="bg-light-cream p-8 rounded-lg shadow-md reveal" style="transition-delay: 0.4s;">
+                            <p class="text-gray-600 italic">"We overcame our financial hurdles with their expert guidance. The techniques learned significantly improved our confidence in the home buying process."</p>
+                            <p class="font-bold mt-4 text-brand-navy">- David S.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section id="faq" class="py-24 bg-light-cream">
+                <div class="container mx-auto px-6 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-brand-navy">Frequently Asked Questions</h2>
+                    <div class="max-w-3xl mx-auto space-y-4">
+                        <div class="bg-white rounded-lg shadow-md">
+                            <button class="accordion-toggle flex justify-between items-center w-full p-6 text-left font-semibold text-lg">
+                                <span>What is a first home buyer loan?</span>
+                                <svg class="accordion-icon w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-content px-6 pb-6 text-gray-600">
+                                <p>A first home buyer loan helps individuals purchase their first property with favorable terms and lower interest rates.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md">
+                            <button class="accordion-toggle flex justify-between items-center w-full p-6 text-left font-semibold text-lg">
+                                <span>What is an investment loan?</span>
+                                <svg class="accordion-icon w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-content px-6 pb-6 text-gray-600">
+                                <p>An investment loan is designed for purchasing properties for rental income or capital growth, often with different criteria than residential loans.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md">
+                            <button class="accordion-toggle flex justify-between items-center w-full p-6 text-left font-semibold text-lg">
+                                <span>How does refinancing work?</span>
+                                <svg class="accordion-icon w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-content px-6 pb-6 text-gray-600">
+                                <p>Refinancing involves replacing your existing loan with a new one, potentially lowering your interest rate or changing loan terms.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md">
+                            <button class="accordion-toggle flex justify-between items-center w-full p-6 text-left font-semibold text-lg">
+                                <span>What is a car loan?</span>
+                                <svg class="accordion-icon w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-content px-6 pb-6 text-gray-600">
+                                <p>A car loan is a type of financing specifically for purchasing a vehicle, often secured by the car itself.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Policy Pages Container -->
+        <div id="policy-pages-container">
+            <section id="privacy-policy" class="policy-page py-24 bg-white">
+                <div class="container mx-auto px-6 policy-content">
+                    <button class="nav-link bg-brand-navy text-white px-5 py-2 rounded-full font-semibold btn-premium mb-8" data-target="#home">← Back to Home</button>
+                    <h1>Privacy Policy for Priser Lending</h1>
+                    <p><strong>Last Updated: 25 August 2025</strong></p>
+                    <p>Priser Lending ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy outlines how we collect, use, disclose, and safeguard your information when you visit our website. We adhere to the Australian Privacy Principles (APPs) contained in the Privacy Act 1988 (Cth).</p>
+                    <h3>1. Collection of Your Information</h3>
+                    <p>We may collect personal information from you in various ways, including:</p>
+                    <ul>
+                        <li><strong>Personal Data:</strong> Personally identifiable information, such as your name, shipping address, email address, and telephone number, and demographic information, such as your age, gender, hometown, and interests, that you voluntarily give to us when you fill out the contact form or subscribe to our newsletter.</li>
+                        <li><strong>Financial Data:</strong> Financial information, such as data related to your income, assets, and liabilities, when you apply for a loan or our services.</li>
+                        <li><strong>Derivative Data:</strong> Information our servers automatically collect when you access the site, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the site.</li>
+                    </ul>
+                    <h3>2. Use of Your Information</h3>
+                    <p>Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you to:</p>
+                    <ul>
+                        <li>Provide and manage our mortgage brokering services.</li>
+                        <li>Email you regarding your account or order.</li>
+                        <li>Respond to your inquiries and offer support.</li>
+                        <li>Send you a newsletter or other promotional materials.</li>
+                        <li>Request feedback and contact you about your use of the site.</li>
+                        <li>Comply with legal and regulatory obligations.</li>
+                    </ul>
+                    <h3>3. Disclosure of Your Information</h3>
+                    <p>We may share information we have collected about you in certain situations. Your information may be disclosed as follows:</p>
+                    <ul>
+                        <li><strong>By Law or to Protect Rights:</strong> If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation.</li>
+                        <li><strong>Third-Party Service Providers:</strong> We may share your information with third parties that perform services for us or on our behalf, including lenders, credit reporting agencies, data analysis, email delivery, and marketing assistance.</li>
+                    </ul>
+                    <h3>4. Security of Your Information</h3>
+                    <p>We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse.</p>
+                    <h3>5. Your Rights</h3>
+                    <p>You have the right to access the personal information we hold about you and to request that we correct any inaccuracies. To make a request, please use the contact information provided below.</p>
+                    <h3>6. Contact Us</h3>
+                    <p>If you have questions or comments about this Privacy Policy, please contact us at:</p>
+                    <p><strong>Priser Lending</strong><br>Email: hello@priserlending.net<br>Phone: 0402 493 803</p>
+                </div>
+            </section>
+
+            <section id="terms-conditions" class="policy-page py-24 bg-white">
+                <div class="container mx-auto px-6 policy-content">
+                    <button class="nav-link bg-brand-navy text-white px-5 py-2 rounded-full font-semibold btn-premium mb-8" data-target="#home">← Back to Home</button>
+                    <h1>Terms and Conditions for Priser Lending</h1>
+                    <p><strong>Last Updated: 25 August 2025</strong></p>
+                    <p>Welcome to Priser Lending. These terms and conditions outline the rules and regulations for the use of Priser Lending's Website.</p>
+                    <p>By accessing this website, we assume you accept these terms and conditions. Do not continue to use Priser Lending if you do not agree to all of the terms and conditions stated on this page.</p>
+                    <h3>1. General Information</h3>
+                    <p>The information provided on this website is for general informational purposes only. It is not intended as financial, legal, or investment advice and should not be construed or relied on as such. Before making any commitment of a financial nature, you should seek advice from a qualified and registered financial or professional adviser.</p>
+                    <h3>2. Limitation of Liability</h3>
+                    <p>Priser Lending will not be liable for any direct, indirect, incidental, consequential, or exemplary loss or damages which may be incurred by you as a result of using our website, or as a result of any changes, data loss or corruption, cancellation, loss of access, or downtime.</p>
+                    <h3>3. Website Use</h3>
+                    <p>You agree to use this website only for the purposes that are permitted by these terms and conditions and any applicable law, regulation, or generally accepted practices in the relevant jurisdictions. You are prohibited from using the site to engage in any activity that is illegal, harmful, or that could damage our reputation.</p>
+                    <h3>4. Accuracy of Information</h3>
+                    <p>While we strive to keep the information on this website accurate and up-to-date, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose.</p>
+                    <h3>5. Intellectual Property</h3>
+                    <p>All content on this website, including text, graphics, logos, and images, is the property of Priser Lending and is protected by copyright laws.</p>
+                    <h3>6. Governing Law</h3>
+                    <p>Your use of this website and any dispute arising out of such use of the website is subject to the laws of Queensland, Australia.</p>
+                    <h3>7. Contact Us</h3>
+                    <p>If you have any questions about these Terms, please contact us at:</p>
+                    <p><strong>Priser Lending</strong><br>Email: hello@priserlending.net</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer id="contact" class="bg-brand-navy text-white pt-20">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-2 reveal">
+                        <h3 class="text-3xl font-bold mb-4">Contact Us</h3>
+                        <p class="text-gray-300 mb-6">Get in touch for inquiries about home loans, investment loans, refinancing, and more. We're here to help you achieve your financial goals.</p>
+                        <form action="#" method="POST" class="space-y-4">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="first-name" class="font-semibold text-gray-200 sr-only">Your First Name</label>
+                                    <input type="text" id="first-name" placeholder="Your First Name" class="w-full px-4 py-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-white">
+                                </div>
+                                <div>
+                                    <label for="footer-email" class="font-semibold text-gray-200 sr-only">Your Email Address*</label>
+                                    <input type="email" id="footer-email" required placeholder="Your Email Address*" class="w-full px-4 py-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-white">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="message" class="font-semibold text-gray-200 sr-only">Your Message*</label>
+                                <textarea id="message" rows="4" required placeholder="Your Message*" class="w-full px-4 py-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-white"></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="bg-white text-brand-navy px-8 py-3 rounded-full font-bold text-lg btn-premium">Submit Inquiry</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="reveal">
+                        <h3 class="text-3xl font-bold mb-4">Location</h3>
+                        <p class="text-gray-300 mb-6">We proudly serve first home buyers and investors in your area.</p>
+                        <div class="space-y-4 text-gray-300">
+                            <div>
+                                <h4 class="font-bold text-white">Address</h4>
+                                <p>Suit 7, 1644 Logan Road<br>Mount Gravatt QLD 4122</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Hours</h4>
+                                <p>9 AM - 5 PM</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white">Contacts</h4>
+                                <p>0402 493 803<br>hello@priserlending.net</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-16 pt-8 pb-8">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h4 class="font-bold mb-2">Subscribe to our newsletter</h4>
+                             <form class="flex">
+                                <input type="email" placeholder="Email address" class="w-full md:w-auto px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-l-md focus:outline-none focus:ring-2 focus:ring-white">
+                                <button class="bg-white text-brand-navy px-6 py-2 rounded-r-md font-semibold hover:bg-gray-200 transition">Submit</button>
+                            </form>
+                        </div>
+                        <div class="text-gray-400 text-sm md:text-right">
+                            <p>&copy; 2025 Priser Lending. All rights reserved.</p>
+                            <p>Australian Credit Licence No. 384704</p>
+                            <p class="mt-2">
+                                <a href="#privacy-policy" class="nav-link hover:underline">Privacy Policy</a> | <a href="#terms-conditions" class="nav-link hover:underline">Terms & Conditions</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // --- Navigation and Page Switching Logic ---
+        const mainContent = document.getElementById('main-content');
+        const policyPagesContainer = document.getElementById('policy-pages-container');
+        const policyPages = document.querySelectorAll('.policy-page');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function showPage(targetId) {
+            window.scrollTo(0, 0); // Scroll to top on page change
+            const target = targetId.substring(1); // remove '#'
+
+            if (target === 'privacy-policy' || target === 'terms-conditions') {
+                mainContent.style.display = 'none';
+                policyPagesContainer.style.display = 'block';
+                policyPages.forEach(page => {
+                    if (page.id === target) {
+                        page.style.display = 'block';
+                    } else {
+                        page.style.display = 'none';
+                    }
+                });
+            } else {
+                // It's a section on the main page
+                mainContent.style.display = 'block';
+                policyPagesContainer.style.display = 'none';
+                
+                const section = document.getElementById(target);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.dataset.target || link.getAttribute('href');
+                showPage(targetId);
+                // For mobile menu, close it after click
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- Scroll-triggered Animations ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+        // --- FAQ Accordion ---
+        const accordionToggles = document.querySelectorAll('.accordion-toggle');
+        accordionToggles.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('.accordion-icon');
+
+                accordionToggles.forEach(otherButton => {
+                    if (otherButton !== button) {
+                        const otherContent = otherButton.nextElementSibling;
+                        const otherIcon = otherButton.querySelector('.accordion-icon');
+                        if (otherContent.style.maxHeight) {
+                            otherContent.style.maxHeight = null;
+                            otherIcon.style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
